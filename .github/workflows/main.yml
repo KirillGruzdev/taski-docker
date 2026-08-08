@@ -172,7 +172,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           source: "docker-compose.production.yml"
-          target: "taski"
+          target: "my_taski"
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -183,7 +183,7 @@ jobs:
           # которые нужно выполнить на сервере, 
           # с которым установлено соединение
           script: |
-            cd taski
+            cd my_taski
             sudo docker compose -f docker-compose.production.yml pull
             sudo docker compose -f docker-compose.production.yml down
             sudo docker compose -f docker-compose.production.yml up -d
